@@ -1,5 +1,16 @@
-{pkgs, ...}: {
-  home.packages = [pkgs.fuzzel pkgs.waybar];
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}: {
+  home.packages = with pkgs; [
+    fuzzel
+    waybar
+    grim
+    slurp
+    wl-clipboard
+  ];
 
   wayland.windowManager.sway = {
     enable = true;
@@ -14,6 +25,15 @@
           statusCommand = "${pkgs.waybar}/bin/waybar";
         }
       ];
+
+      keybindings = let
+        inherit (config.wayland.windowManager.sway.config) modifier;
+      in
+        lib.mkOptionDefault {
+          "Print" = "exec ${pkgs.grim}/bin/grim -g \"$(${pkgs.slurp}/bin/slurp)\" - | ${pkgs.wl-clipboard}/bin/wl-copy";
+          "Shift+Print" = "exec ${pkgs.grim}/bin/grim -g \"$(${pkgs.slurp}/bin/slurp)\" ~/Bilder/Screenshot_$(date +'%Y-%m-%d_%H-%M-%S').png";
+          "${modifier}+Print" = "exec ${pkgs.grim}/bin/grim - | ${pkgs.wl-clipboard}/bin/wl-copy";
+        };
     };
   };
 }
