@@ -6,6 +6,11 @@
     "git.confirmSync" = false;
     "diffEditor.codeLens" = true;
 
+    "files.autoSave" = "afterDelay";
+    "editor.formatOnSave" = true;
+    "files.trimTrailingWhitespace" = true;
+    "files.insertFinalNewline" = true;
+
     "todo-tree.ripgrep.ripgrep" = rgPath;
 
     "workbench.colorTheme" = "Dark+";
@@ -42,11 +47,6 @@ in {
         userSettings =
           commonSettings
           // {
-            "files.autoSave" = "afterDelay";
-            "files.trimTrailingWhitespace" = true;
-            "files.insertFinalNewline" = true;
-
-            "editor.formatOnSave" = true;
             "editor.defaultFormatter" = "esbenp.prettier-vscode";
 
             "[markdown]" = {
@@ -75,12 +75,6 @@ in {
         userSettings =
           commonSettings
           // {
-            "files.autoSave" = "afterDelay";
-            "files.trimTrailingWhitespace" = true;
-            "files.insertFinalNewline" = true;
-
-            "editor.formatOnSave" = true;
-
             "[markdown]" = {
               "editor.defaultFormatter" = "DavidAnson.vscode-markdownlint";
             };
@@ -119,7 +113,6 @@ in {
 
             "[nix]" = {
               "editor.defaultFormatter" = "jnoortheen.nix-ide";
-              "editor.formatOnSave" = true;
             };
           };
       };
@@ -137,7 +130,6 @@ in {
         userSettings =
           commonSettings
           // {
-            "editor.formatOnSave" = true;
             "editor.defaultFormatter" = "biomejs.biome";
 
             "[markdown]" = {
