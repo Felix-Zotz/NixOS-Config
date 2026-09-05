@@ -1,13 +1,10 @@
-{ pkgs, ... }:
-
-{
+{pkgs, ...}: {
   programs.git = {
     enable = true;
-    settings = {
-      user = {
-        name  = "Felix Zotz";
-        email = "felix.zotz@gmail.com";
-      };
+    userName = "Felix Zotz";
+    userEmail = "felix.zotz@gmail.com";
+
+    extraConfig = {
       pull.rebase = true;
     };
   };
