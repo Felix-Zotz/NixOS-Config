@@ -1,7 +1,5 @@
-{ pkgs, ... }:
-
-{
-  home.packages = [ pkgs.fuzzel pkgs.waybar ];
+{pkgs, ...}: {
+  home.packages = [pkgs.fuzzel pkgs.waybar];
 
   wayland.windowManager.sway = {
     enable = true;

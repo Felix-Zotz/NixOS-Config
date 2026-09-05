@@ -1,6 +1,4 @@
-{ pkgs, ... }:
-
-let
+{pkgs, ...}: let
   rgPath = "${pkgs.ripgrep}/bin/rg";
 
   commonSettings = {
@@ -24,8 +22,7 @@ let
     davidanson.vscode-markdownlint
     gruntfuggly.todo-tree
   ];
-in
-{
+in {
   programs.vscode = {
     enable = true;
 
@@ -34,62 +31,72 @@ in
         enableExtensionUpdateCheck = false;
         enableUpdateCheck = false;
 
-        extensions = commonExtensions ++ (with pkgs.vscode-extensions; [
-          esbenp.prettier-vscode
-          tomoki1207.pdf
-          #spadin.zmk-tools
-        ]);
+        extensions =
+          commonExtensions
+          ++ (with pkgs.vscode-extensions; [
+            esbenp.prettier-vscode
+            tomoki1207.pdf
+            #spadin.zmk-tools
+          ]);
 
-        userSettings = commonSettings // {
-          "files.autoSave" = "afterDelay";
-          "files.trimTrailingWhitespace" = true;
-          "files.insertFinalNewline" = true;
+        userSettings =
+          commonSettings
+          // {
+            "files.autoSave" = "afterDelay";
+            "files.trimTrailingWhitespace" = true;
+            "files.insertFinalNewline" = true;
 
-          "editor.formatOnSave" = true;
-          "editor.defaultFormatter" = "esbenp.prettier-vscode";
+            "editor.formatOnSave" = true;
+            "editor.defaultFormatter" = "esbenp.prettier-vscode";
 
-          "[markdown]" = {
-            "editor.defaultFormatter" = "DavidAnson.vscode-markdownlint";
+            "[markdown]" = {
+              "editor.defaultFormatter" = "DavidAnson.vscode-markdownlint";
+            };
+            "[toml]" = {
+              "editor.defaultFormatter" = "tamasfe.even-better-toml";
+            };
           };
-          "[toml]" = {
-            "editor.defaultFormatter" = "tamasfe.even-better-toml";
-          };
-        };
       };
 
       APA = {
-        extensions = commonExtensions ++ (with pkgs.vscode-extensions; [
-          vadimcn.vscode-lldb
-          #connor4312.esbuild-problem-matchers
-          dbaeumer.vscode-eslint
-          #ms-vscode.extension-test-runner
-          christian-kohler.npm-intellisense
-          esbenp.prettier-vscode
-          yoavbls.pretty-ts-errors
-          rust-lang.rust-analyzer
-        ]);
+        extensions =
+          commonExtensions
+          ++ (with pkgs.vscode-extensions; [
+            vadimcn.vscode-lldb
+            #connor4312.esbuild-problem-matchers
+            dbaeumer.vscode-eslint
+            #ms-vscode.extension-test-runner
+            christian-kohler.npm-intellisense
+            esbenp.prettier-vscode
+            yoavbls.pretty-ts-errors
+            rust-lang.rust-analyzer
+          ]);
 
-        userSettings = commonSettings // {
-          "files.autoSave" = "afterDelay";
-          "files.trimTrailingWhitespace" = true;
-          "files.insertFinalNewline" = true;
+        userSettings =
+          commonSettings
+          // {
+            "files.autoSave" = "afterDelay";
+            "files.trimTrailingWhitespace" = true;
+            "files.insertFinalNewline" = true;
 
-          "editor.formatOnSave" = true;
+            "editor.formatOnSave" = true;
 
-          "[markdown]" = {
-            "editor.defaultFormatter" = "DavidAnson.vscode-markdownlint";
+            "[markdown]" = {
+              "editor.defaultFormatter" = "DavidAnson.vscode-markdownlint";
+            };
+            "[toml]" = {
+              "editor.defaultFormatter" = "tamasfe.even-better-toml";
+            };
           };
-          "[toml]" = {
-            "editor.defaultFormatter" = "tamasfe.even-better-toml";
-          };
-        };
       };
 
       FLL = {
-        extensions = commonExtensions ++ (with pkgs.vscode-extensions; [
-          ms-python.python
-          charliermarsh.ruff
-        ]);
+        extensions =
+          commonExtensions
+          ++ (with pkgs.vscode-extensions; [
+            ms-python.python
+            charliermarsh.ruff
+          ]);
 
         userSettings = commonSettings;
       };
@@ -101,39 +108,45 @@ in
           jnoortheen.nix-ide
         ];
 
-        userSettings = commonSettings // {
-          "nix.enableLanguageServer" = true;
-          "nix.serverPath" = "${pkgs.nil}/bin/nil";
-          "nix.serverSettings.nil.formatting.command" = [
-            "${pkgs.alejandra}/bin/alejandra"
-          ];
+        userSettings =
+          commonSettings
+          // {
+            "nix.enableLanguageServer" = true;
+            "nix.serverPath" = "${pkgs.nil}/bin/nil";
+            "nix.serverSettings.nil.formatting.command" = [
+              "${pkgs.alejandra}/bin/alejandra"
+            ];
 
-          "[nix]" = {
-            "editor.defaultFormatter" = "jnoortheen.nix-ide";
-            "editor.formatOnSave" = true;
+            "[nix]" = {
+              "editor.defaultFormatter" = "jnoortheen.nix-ide";
+              "editor.formatOnSave" = true;
+            };
           };
-        };
       };
 
       WEB = {
-        extensions = commonExtensions ++ (with pkgs.vscode-extensions; [
-          formulahendry.auto-rename-tag
-          biomejs.biome
-          ecmel.vscode-html-css
-          tomoki1207.pdf
-        ]);
+        extensions =
+          commonExtensions
+          ++ (with pkgs.vscode-extensions; [
+            formulahendry.auto-rename-tag
+            biomejs.biome
+            ecmel.vscode-html-css
+            tomoki1207.pdf
+          ]);
 
-        userSettings = commonSettings // {
-          "editor.formatOnSave" = true;
-          "editor.defaultFormatter" = "biomejs.biome";
+        userSettings =
+          commonSettings
+          // {
+            "editor.formatOnSave" = true;
+            "editor.defaultFormatter" = "biomejs.biome";
 
-          "[markdown]" = {
-            "editor.defaultFormatter" = "DavidAnson.vscode-markdownlint";
+            "[markdown]" = {
+              "editor.defaultFormatter" = "DavidAnson.vscode-markdownlint";
+            };
+            "[toml]" = {
+              "editor.defaultFormatter" = "tamasfe.even-better-toml";
+            };
           };
-          "[toml]" = {
-            "editor.defaultFormatter" = "tamasfe.even-better-toml";
-          };
-        };
       };
     };
   };

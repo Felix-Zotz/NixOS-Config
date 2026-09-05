@@ -10,24 +10,30 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }@inputs:
-    let
-      mkHost = hostname: extraModules: nixpkgs.lib.nixosSystem {
+  outputs = {
+    self,
+    nixpkgs,
+    home-manager,
+    ...
+  } @ inputs: let
+    mkHost = hostname: extraModules:
+      nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-        specialArgs = { inherit inputs; };
-        modules = [
-          ./hosts/${hostname}
-          home-manager.nixosModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.extraSpecialArgs = { inherit inputs; };
-            home-manager.backupFileExtension = "bak";
-          }
-        ] ++ extraModules;
+        specialArgs = {inherit inputs;};
+        modules =
+          [
+            ./hosts/${hostname}
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.extraSpecialArgs = {inherit inputs;};
+              home-manager.backupFileExtension = "bak";
+            }
+          ]
+          ++ extraModules;
       };
-    in
-    {
-      nixosConfigurations."Workstation-Server" = mkHost "workstation-server" [ ];
-    };
+  in {
+    nixosConfigurations."Workstation-Server" = mkHost "workstation-server" [];
+  };
 }

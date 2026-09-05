@@ -1,14 +1,12 @@
-{ pkgs, ... }:
-
-{
+{pkgs, ...}: {
   environment.systemPackages = with pkgs; [
     graalvmPackages.graalvm-ce
   ];
 
   # 25565 = Minecraft, 8080 = Open WebUI, 9200 = OpenCloud
-  networking.firewall.allowedTCPPorts = [ 25565 8080 9200 ];
+  networking.firewall.allowedTCPPorts = [25565 8080 9200];
   # 24454 = Minecraft voice chat
-  networking.firewall.allowedUDPPorts = [ 24454 ];
+  networking.firewall.allowedUDPPorts = [24454];
 
   services.open-webui = {
     enable = true;
@@ -31,7 +29,7 @@
 
   # Automatic shutdown for the night
   systemd.timers.scheduled-shutdown = {
-    wantedBy = [ "timers.target" ];
+    wantedBy = ["timers.target"];
     timerConfig = {
       OnCalendar = "23:15";
       Unit = "poweroff.target";
@@ -41,7 +39,7 @@
 
   systemd.services.hd-idle-hdd1 = {
     description = "Spindown HDD (Seagate) after idle";
-    wantedBy = [ "multi-user.target" ];
+    wantedBy = ["multi-user.target"];
     serviceConfig = {
       Type = "oneshot";
       RemainAfterExit = true;
@@ -50,7 +48,7 @@
   };
   systemd.services.hd-idle-hdd2 = {
     description = "Spindown HDD (Toshiba) after idle";
-    wantedBy = [ "multi-user.target" ];
+    wantedBy = ["multi-user.target"];
     serviceConfig = {
       Type = "oneshot";
       RemainAfterExit = true;
