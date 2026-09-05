@@ -6,11 +6,14 @@
 }: {
   home.packages = with pkgs; [
     fuzzel
-    waybar
     grim
     slurp
     wl-clipboard
   ];
+
+  programs.waybar = {
+    enable = true;
+  };
 
   wayland.windowManager.sway = {
     enable = true;
@@ -19,11 +22,10 @@
       terminal = "${pkgs.ghostty}/bin/ghostty";
       menu = "${pkgs.fuzzel}/bin/fuzzel_path | ${pkgs.fuzzel}/bin/fuzzel | ${pkgs.findutils}/bin/xargs swaymsg exec --";
 
-      bars = [
-        {
-          position = "bottom";
-          statusCommand = "${pkgs.waybar}/bin/waybar";
-        }
+      bars = [];
+
+      startup = [
+        {command = "${pkgs.waybar}/bin/waybar";}
       ];
 
       keybindings = let
