@@ -22,8 +22,11 @@
       terminal = "${pkgs.ghostty}/bin/ghostty";
       menu = "${pkgs.fuzzel}/bin/fuzzel_path | ${pkgs.fuzzel}/bin/fuzzel | ${pkgs.findutils}/bin/xargs swaymsg exec --";
 
-      bars = [];
+      output."DP-1".scale = "1.25";
 
+      input."type:keyboard".xkb_layout = "eu";
+
+      bars = [];
       startup = [
         {command = "${pkgs.waybar}/bin/waybar";}
       ];
