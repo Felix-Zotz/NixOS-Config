@@ -11,10 +11,6 @@
     wl-clipboard
   ];
 
-  programs.waybar = {
-    enable = true;
-  };
-
   wayland.windowManager.sway = {
     enable = true;
     config = {
@@ -31,9 +27,6 @@
       };
 
       bars = [];
-      startup = [
-        {command = "${pkgs.waybar}/bin/waybar";}
-      ];
 
       keybindings = let
         inherit (config.wayland.windowManager.sway.config) modifier;
