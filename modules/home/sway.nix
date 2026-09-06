@@ -24,7 +24,11 @@
 
       output."DP-1".scale = "1.25";
 
-      input."type:keyboard".xkb_layout = "eu";
+      input."type:keyboard" = {
+        xkb_layout = "eu";
+        repeat_delay = "150";
+        repeat_rate = "50";
+      };
 
       bars = [];
       startup = [
