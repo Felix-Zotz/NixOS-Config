@@ -2,6 +2,7 @@
   imports = [
     ./hardware.nix
 
+    ../../modules/nixos/audio.nix
     ../../modules/nixos/core.nix
     ../../modules/nixos/gpu.nix
     ../../modules/nixos/server-services.nix
