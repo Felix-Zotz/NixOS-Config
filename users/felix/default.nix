@@ -21,6 +21,7 @@
       ../../modules/home/shell.nix
       ../../modules/home/sway.nix
       ../../modules/home/vscode.nix
+      ../../modules/home/yazi.nix
     ];
     home.stateVersion = "26.05";
   };
