@@ -1,8 +1,11 @@
-{pkgs, ...}: {
+{...}: {
   programs.firefox = {
     enable = true;
 
     policies = {
+      OfferToSaveLogins = false;
+      PasswordManagerEnabled = false;
+
       ExtensionSettings = {
         # uBlock Origin
         "uBlock0@raymondhill.net" = {
@@ -39,6 +42,15 @@
           install_url = "https://addons.mozilla.org/firefox/downloads/latest/keepassxc-browser/latest.xpi";
           installation_mode = "force_installed";
         };
+      };
+    };
+
+    profiles.default = {
+      isDefault = true;
+
+      settings = {
+        "browser.translations.enable" = false;
+        "browser.translations.automaticallyPopup" = false;
       };
     };
   };
