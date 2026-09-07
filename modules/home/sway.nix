@@ -26,7 +26,10 @@
           repeat_delay = "150";
           repeat_rate = "50";
         };
-        "type:pointer".accel_profile = "flat";
+        "type:pointer" = {
+          accel_profile = "flat";
+          natural_scroll = "enabled";
+        };
       };
       bars = [];
 
