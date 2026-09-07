@@ -6,4 +6,6 @@
     alsa.enable = true;
     pulse.enable = true;
   };
+
+  services.playerctld.enable = true;
 }
