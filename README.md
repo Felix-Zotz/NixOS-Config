@@ -1,4 +1,6 @@
-# workstation-server-config
+# NixOS Config
+
+This is my personal NixOS configuration.
 
 ## Usage of AI
 
