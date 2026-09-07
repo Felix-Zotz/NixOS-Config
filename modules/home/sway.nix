@@ -20,12 +20,14 @@
 
       output."DP-1".scale = "1.25";
 
-      input."type:keyboard" = {
-        xkb_layout = "eu";
-        repeat_delay = "150";
-        repeat_rate = "50";
+      input = {
+        "type:keyboard" = {
+          xkb_layout = "eu";
+          repeat_delay = "150";
+          repeat_rate = "50";
+        };
+        "type:pointer".accel_profile = "flat";
       };
-
       bars = [];
 
       keybindings = let
