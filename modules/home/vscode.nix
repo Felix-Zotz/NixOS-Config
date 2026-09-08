@@ -24,6 +24,7 @@
   commonExtensions = with pkgs.vscode-extensions; [
     streetsidesoftware.code-spell-checker
     tamasfe.even-better-toml
+    kilocode.kilo-code
     github.vscode-pull-request-github
     davidanson.vscode-markdownlint
     gruntfuggly.todo-tree
