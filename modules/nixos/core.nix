@@ -43,4 +43,6 @@
   };
 
   services.journald.extraConfig = "SystemMaxUse=500M";
+
+  programs.dconf.enable = true;
 }

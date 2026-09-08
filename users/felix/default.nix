@@ -16,6 +16,7 @@
       ../../modules/home/firefox.nix
       ../../modules/home/ghostty.nix
       ../../modules/home/git.nix
+      ../../modules/home/gtk.nix
       ../../modules/home/keepassxc.nix
       ../../modules/home/neovim.nix
       ../../modules/home/shell.nix
