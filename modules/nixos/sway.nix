@@ -1,7 +1,12 @@
-{ pkgs, ... }:
-
 {
-  programs.sway.enable = true;
+  pkgs,
+  lib,
+  ...
+}: {
+  programs.sway = {
+    enable = true;
+    extraPackages = lib.mkForce [];
+  };
 
   services.seatd.enable = true;
 

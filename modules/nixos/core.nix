@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  lib,
+  ...
+}: {
   time.timeZone = "Europe/Berlin";
 
   i18n.defaultLocale = "en_US.UTF-8";
@@ -20,7 +24,11 @@
 
   nixpkgs.config.allowUnfree = true;
 
-  environment.systemPackages = with pkgs; [git];
+  environment = {
+    defaultPackages = lib.mkForce [];
+    systemPackages = with pkgs; [git neovim];
+    variables.EDITOR = "nvim";
+  };
 
   services.openssh = {
     enable = true;
