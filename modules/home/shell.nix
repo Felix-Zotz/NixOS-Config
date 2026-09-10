@@ -9,6 +9,7 @@
     ripgrep
     fd
     bat
+    ddcutil
   ];
 
   programs.home-manager.enable = true;

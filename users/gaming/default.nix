@@ -2,7 +2,7 @@
   users.users.gaming = {
     isNormalUser = true;
     description = "Gaming";
-    extraGroups = ["video" "render" "input" "seat"];
+    extraGroups = ["video" "render" "input" "seat" "i2c"];
   };
 
   home-manager.users.gaming = {
