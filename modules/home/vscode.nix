@@ -18,7 +18,6 @@
     "workbench.iconTheme" = "vs-seti";
     "workbench.activityBar.location" = "top";
     "editor.minimap.autohide" = "mouseover";
-    "telemetry.telemetryLevel" = "off";
   };
 
   commonExtensions = with pkgs.vscode-extensions; [
@@ -58,6 +57,7 @@ in {
             "[toml]" = {
               "editor.defaultFormatter" = "tamasfe.even-better-toml";
             };
+            "telemetry.telemetryLevel" = "off";
           };
       };
 
