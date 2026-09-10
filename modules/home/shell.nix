@@ -11,6 +11,7 @@
     bat
     ddcutil
   ];
+  services.playerctld.enable = true;
 
   programs.home-manager.enable = true;
 }
