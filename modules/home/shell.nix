@@ -12,6 +12,7 @@
     fd
     bat
     ddcutil
+    spotify-player
   ];
   services.playerctld.enable = true;
 
