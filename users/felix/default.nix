@@ -21,6 +21,7 @@
       ../../modules/home/neovim.nix
       ../../modules/home/shell.nix
       ../../modules/home/sway.nix
+      ../../modules/home/toolchains.nix
       ../../modules/home/vscode.nix
       ../../modules/home/yazi.nix
     ];
