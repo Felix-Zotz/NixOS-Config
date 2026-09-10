@@ -6,7 +6,7 @@
     "git.confirmSync" = false;
     "diffEditor.codeLens" = true;
 
-    security.workspace.trust.enabled = false;
+    "security.workspace.trust.enabled" = false;
     "files.autoSave" = "afterDelay";
     "editor.formatOnSave" = true;
     "files.trimTrailingWhitespace" = true;
