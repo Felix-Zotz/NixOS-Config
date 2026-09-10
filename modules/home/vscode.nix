@@ -49,6 +49,7 @@ in {
         userSettings =
           commonSettings
           // {
+            "window.newWindowProfile" = "Default";
             "editor.defaultFormatter" = "esbenp.prettier-vscode";
 
             "[markdown]" = {
