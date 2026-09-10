@@ -6,6 +6,8 @@
   };
 
   home.packages = with pkgs; [
+    python312
+    rustup
     ripgrep
     fd
     bat
