@@ -11,6 +11,7 @@
     bat
     ddcutil
     spotify-player
+    pulseaudio
   ];
   services.playerctld.enable = true;
 
