@@ -92,6 +92,9 @@ in {
           commonExtensions
           ++ (with pkgs.vscode-extensions; [
             ms-python.python
+            ms-python.vscode-pylance
+            ms-python.debugpy
+            ms-python.vscode-python-envs
             charliermarsh.ruff
           ]);
 
