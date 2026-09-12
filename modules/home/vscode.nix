@@ -18,6 +18,7 @@
     "workbench.iconTheme" = "vs-seti";
     "workbench.activityBar.location" = "top";
     "editor.minimap.autohide" = "mouseover";
+    "kilo-code.new.attention.enabled" = true;
   };
 
   commonExtensions = with pkgs.vscode-extensions; [
