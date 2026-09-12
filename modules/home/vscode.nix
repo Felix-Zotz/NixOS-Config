@@ -18,7 +18,12 @@
     "workbench.iconTheme" = "vs-seti";
     "workbench.activityBar.location" = "top";
     "editor.minimap.autohide" = "mouseover";
+
     "kilo-code.new.attention.enabled" = true;
+    "terminal.integrated.commandsToSkipShell" = [
+      "kilo-code.new.agentManagerOpen"
+      "kilo-code.new.agentManager.showTerminal"
+    ];
   };
 
   commonExtensions = with pkgs.vscode-extensions; [
