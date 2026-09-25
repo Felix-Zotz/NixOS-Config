@@ -16,4 +16,9 @@
   services.playerctld.enable = true;
 
   programs.home-manager.enable = true;
+
+  home.shellAliases = {
+    down = "systemctl poweroff";
+    sleep = "systemctl suspend";
+  };
 }
