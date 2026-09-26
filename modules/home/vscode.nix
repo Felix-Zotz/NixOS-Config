@@ -60,6 +60,7 @@ in {
               "editor.defaultFormatter" = "tamasfe.even-better-toml";
             };
             "telemetry.telemetryLevel" = "off";
+            "kilo-code.new.agentWorkStyle" = "human-in-the-loop";
           };
       };
 
