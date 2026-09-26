@@ -8,12 +8,18 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    disko = {
+      url = "github:nix-community/disko";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
     self,
     nixpkgs,
     home-manager,
+    disko,
     ...
   } @ inputs: let
     mkHost = hostname: extraModules:
@@ -35,5 +41,9 @@
       };
   in {
     nixosConfigurations."Workstation-Server" = mkHost "workstation-server" [];
+    nixosConfigurations."Laptop" = mkHost "laptop" [
+      disko.nixosModules.disko
+      ./hosts/laptop/disko.nix
+    ];
   };
 }
