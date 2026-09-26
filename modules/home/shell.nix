@@ -1,4 +1,5 @@
 {pkgs, ...}: {
+  programs.bash.enable = true;
   programs.zsh.enable = true;
   programs.direnv = {
     enable = true;
@@ -19,6 +20,7 @@
 
   home.shellAliases = {
     down = "systemctl poweroff";
-    sleep = "systemctl suspend";
+    sus = "systemctl suspend";
+    update = "nix flake update --flake ~/.config/nixos";
   };
 }

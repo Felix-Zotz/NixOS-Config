@@ -40,4 +40,10 @@
   networking.nameservers = ["1.1.1.1" "192.168.178.1"];
 
   system.stateVersion = "26.05";
+
+  home-manager.users.felix.home.shellAliases = {
+    build = "sudo nixos-rebuild build --flake ~/.config/nixos#Workstation-Server";
+    rebuild = "sudo nixos-rebuild switch --flake ~/.config/nixos#Workstation-Server";
+  };
+
 }
