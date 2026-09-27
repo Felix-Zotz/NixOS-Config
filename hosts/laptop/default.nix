@@ -3,6 +3,7 @@
     ./hardware.nix
 
     ../../modules/nixos/audio.nix
+    ../../modules/nixos/battery.nix
     ../../modules/nixos/core.nix
     ../../modules/nixos/gpu.nix
     ../../modules/nixos/headless-boot.nix
