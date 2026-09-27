@@ -18,6 +18,7 @@
       ../../modules/home/git.nix
       ../../modules/home/gtk.nix
       ../../modules/home/keepassxc.nix
+      ../../modules/home/media_viewer.nix
       ../../modules/home/neovim.nix
       ../../modules/home/shell.nix
       ../../modules/home/sway.nix
