@@ -12,6 +12,7 @@
   ];
 
   networking.hostName = "Laptop";
+  networking.networkmanager.enable = true;
 
   # Bootloader + kernel choice live here, not in core.nix - a future
   # second host (different disk layout, different hardware) shouldn't
