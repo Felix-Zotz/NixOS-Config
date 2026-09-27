@@ -43,7 +43,7 @@
 
   home-manager.users.felix.home.shellAliases = {
     build = "sudo nixos-rebuild build --flake ~/.config/nixos#Workstation-Server";
-    rebuild = "sudo nixos-rebuild switch --flake ~/.config/nixos#Workstation-Server";
+    switch = "sudo nixos-rebuild switch --flake ~/.config/nixos#Workstation-Server";
   };
 
 }

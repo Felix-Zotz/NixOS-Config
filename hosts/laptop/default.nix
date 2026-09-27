@@ -25,7 +25,7 @@
 
   home-manager.users.felix.home.shellAliases = {
     build = "sudo nixos-rebuild build --flake ~/.config/nixos#Laptop";
-    rebuild = "sudo nixos-rebuild switch --flake ~/.config/nixos#Laptop";
+    switch = "sudo nixos-rebuild switch --flake ~/.config/nixos#Laptop";
     batt = "cat /sys/class/power_supply/BAT*/capacity";
   };
 }
