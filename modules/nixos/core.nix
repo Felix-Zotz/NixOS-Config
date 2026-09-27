@@ -50,7 +50,7 @@
     options = "--delete-older-than 14d";
   };
 
-  services.journald.extraConfig = "SystemMaxUse=500M";
+  services.journald.settings.Journal.SystemMaxUse = "500M";
 
   programs.dconf.enable = true;
 
