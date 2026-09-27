@@ -23,6 +23,15 @@
     environmentFile = "/etc/opencloud/secrets.env"; # JWT_SECRET, ADMIN_PASSWORD etc.
   };
 
+  services.immich = {
+    enable = true;
+    port = 2283;
+    host = "0.0.0.0";
+    openFirewall = true;
+    accelerationDevices = null;
+  };
+  users.users.immich.extraGroups = ["video" "render"];
+
   # Automatic shutdown for the night
   systemd.timers.scheduled-shutdown = {
     wantedBy = ["timers.target"];
