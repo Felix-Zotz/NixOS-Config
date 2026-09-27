@@ -3,6 +3,7 @@
     ./hardware.nix
 
     ../../modules/nixos/audio.nix
+    ../../modules/nixos/battery.nix
     ../../modules/nixos/core.nix
     ../../modules/nixos/gpu.nix
     ../../modules/nixos/server-services.nix
@@ -45,5 +46,4 @@
     build = "sudo nixos-rebuild build --flake ~/.config/nixos#Workstation-Server";
     switch = "sudo nixos-rebuild switch --flake ~/.config/nixos#Workstation-Server";
   };
-
 }
