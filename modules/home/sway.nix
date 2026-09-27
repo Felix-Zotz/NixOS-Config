@@ -22,7 +22,7 @@
 
       input = {
         "type:keyboard" = {
-          xkb_layout = "eu";
+          xkb_layout = "eu,de";
           repeat_delay = "150";
           repeat_rate = "50";
         };
@@ -54,6 +54,8 @@
 
           "XF86MonBrightnessUp" = "exec ${pkgs.ddcutil}/bin/ddcutil setvcp 10 + 5";
           "XF86MonBrightnessDown" = "exec ${pkgs.ddcutil}/bin/ddcutil setvcp 10 - 5";
+
+          "${modifier}+space" = "input type:keyboard xkb_switch_layout next";
         };
     };
   };
