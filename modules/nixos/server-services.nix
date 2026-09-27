@@ -33,22 +33,20 @@
     };
   };
 
-  systemd.services.hd-idle-hdd1 = {
-    description = "Spindown HDD (Seagate) after idle";
+  systemd.services.hd-idle = {
+    description = "hd-idle - spin down idle HDDs";
     wantedBy = ["multi-user.target"];
     serviceConfig = {
-      Type = "oneshot";
-      RemainAfterExit = true;
-      ExecStart = "${pkgs.hdparm}/bin/hdparm -S 120 /dev/disk/by-id/ata-ST1000DM003-1SB102_ZN15QTXL";
-    };
-  };
-  systemd.services.hd-idle-hdd2 = {
-    description = "Spindown HDD (Toshiba) after idle";
-    wantedBy = ["multi-user.target"];
-    serviceConfig = {
-      Type = "oneshot";
-      RemainAfterExit = true;
-      ExecStart = "${pkgs.hdparm}/bin/hdparm -S 120 /dev/disk/by-id/ata-TOSHIBA_HDWD110_218TKVZFS";
+      Type = "simple";
+      ExecStart = ''
+        ${pkgs.hd-idle}/bin/hd-idle -i 0 \
+          -a /dev/disk/by-id/ata-ST1000DM003-1SB102_ZN15QTXL -i 600 \
+          -a /dev/disk/by-id/ata-TOSHIBA_HDWD110_218TKVZFS -i 600
+      '';
+      Restart = "on-failure";
+      RestartSec = "10s";
+      ProtectSystem = "full";
+      ProtectHome = true;
     };
   };
 
