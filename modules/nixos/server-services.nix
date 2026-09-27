@@ -1,8 +1,4 @@
 {pkgs, ...}: {
-  environment.systemPackages = with pkgs; [
-    graalvmPackages.graalvm-ce
-  ];
-
   # 25565 = Minecraft, 8080 = Open WebUI, 9200 = OpenCloud
   networking.firewall.allowedTCPPorts = [25565 8080 9200];
   # 24454 = Minecraft voice chat
