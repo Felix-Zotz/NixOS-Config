@@ -46,6 +46,7 @@
         force = true;
         settings = [
           {
+            name = "toolbar";
             toolbar = true;
             bookmarks = [
               {
@@ -75,7 +76,6 @@
               }
               {
                 name = "FLL";
-                toolbar = true;
                 bookmarks = [
                   {
                     name = "Nextcloud";
