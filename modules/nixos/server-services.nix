@@ -4,6 +4,16 @@
   # 24454 = Minecraft voice chat
   networking.firewall.allowedUDPPorts = [24454];
 
+  services.cloudflared = {
+    enable = true;
+    tunnels = {
+      "06130a6b-33b9-4040-a7fe-ebd00fe4ee34" = {
+        tokenFile = "/var/lib/cloudflared/server-token";
+        default = "http_status:404";
+      };
+    };
+  };
+
   services.open-webui = {
     enable = true;
     port = 8080;
