@@ -1,16 +1,20 @@
 {pkgs, ...}: {
-  # 25565 = Minecraft, 8080 = Open WebUI, 9200 = OpenCloud
-  networking.firewall.allowedTCPPorts = [25565 8080 9200];
-  # 24454 = Minecraft voice chat
-  networking.firewall.allowedUDPPorts = [24454];
+  networking.firewall = {
+    allowedTCPPorts = [25565]; # Minecraft
+    allowedUDPPorts = [24454]; # Minecraft Voice-Chat
+  };
 
   services.cloudflared = {
     enable = true;
-    tunnels = {
-      "06130a6b-33b9-4040-a7fe-ebd00fe4ee34" = {
-        tokenFile = "/var/lib/cloudflared/server-token";
-        default = "http_status:404";
+    tunnels."16def8b5-0164-43e3-ba30-b5c049fd7dbc" = {
+      credentialsFile = "/var/lib/cloudflared/creds.json";
+      ingress = {
+        "open-webui.irrwichte.de" = "http://127.0.0.1:8080";
+        "opencloud.irrwichte.de" = "http://127.0.0.1:9200";
+        "immich.irrwichte.de" = "http://127.0.0.1:2283";
+        # TODO:SSH (?)
       };
+      default = "http_status:404";
     };
   };
 
@@ -29,7 +33,7 @@
     enable = true;
     address = "0.0.0.0";
     port = 9200;
-    url = "http://192.168.178.176:9200";
+    url = "https://opencloud.irrwichte.de";
     environmentFile = "/etc/opencloud/secrets.env"; # JWT_SECRET, ADMIN_PASSWORD etc.
   };
 
