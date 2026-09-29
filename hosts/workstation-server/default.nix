@@ -39,6 +39,21 @@
   };
   networking.nameservers = ["1.1.1.1" "192.168.178.1"];
 
+  fileSystems."/mnt/hdd1" = {
+    device = "/dev/disk/by-uuid/1d0e5eac-e7f0-474f-8403-137b3b1fbecc";
+    fsType = "ext4";
+  };
+
+  fileSystems."/mnt/hdd2" = {
+    device = "/dev/disk/by-uuid/56bfe721-c392-4d7a-8cb9-fb5f6e8fd400";
+    fsType = "ext4";
+  };
+
+  fileSystems."/mnt/sata-ssd" = {
+    device = "/dev/disk/by-uuid/025f42c8-e879-4c3f-ac12-b294b651e1b5";
+    fsType = "ext4";
+  };
+
   system.stateVersion = "26.05";
 
   home-manager.users.felix.home.shellAliases = {
