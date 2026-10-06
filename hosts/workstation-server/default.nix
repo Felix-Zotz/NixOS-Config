@@ -10,7 +10,6 @@
     ../../modules/nixos/sway.nix
 
     ../../users/felix
-    ../../users/gaming
   ];
 
   networking.hostName = "Workstation-Server";

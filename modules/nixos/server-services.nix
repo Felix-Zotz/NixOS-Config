@@ -1,9 +1,4 @@
 {pkgs, ...}: {
-  networking.firewall = {
-    allowedTCPPorts = [25565]; # Minecraft
-    allowedUDPPorts = [24454]; # Minecraft Voice-Chat
-  };
-
   services.cloudflared = {
     enable = true;
     tunnels."16def8b5-0164-43e3-ba30-b5c049fd7dbc" = {

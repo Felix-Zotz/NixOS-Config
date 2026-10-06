@@ -1,5 +1,5 @@
 {
-  description = "Workstation-Server: server daemons + felix (normal) + gaming user";
+  description = "Workstation-Server: server daemons + felix user";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
