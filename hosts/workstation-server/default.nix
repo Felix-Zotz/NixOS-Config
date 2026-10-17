@@ -8,6 +8,7 @@
     ../../modules/nixos/server-services.nix
     ../../modules/nixos/headless-boot.nix
     ../../modules/nixos/sway.nix
+    ../../modules/nixos/syncthing.nix
 
     ../../users/felix
   ];
@@ -59,4 +60,20 @@
     build = "sudo nixos-rebuild build --flake ~/.config/nixos#Workstation-Server";
     switch = "sudo nixos-rebuild switch --flake ~/.config/nixos#Workstation-Server";
   };
+
+  services.syncthing.settings = {
+    gui.user = "workstation-server";
+    devices = {
+      "laptop" = { id = "TODO"; };
+    };
+    folders = {
+      "passwords" = {
+        devices = [ "laptop" "smartphone" "iPad" ];
+      };
+      "markdown" = {
+        devices = [ "laptop" "smartphone" "iPad" ];
+      };
+    };
+  };
+
 }

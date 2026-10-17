@@ -8,6 +8,7 @@
     ../../modules/nixos/gpu.nix
     ../../modules/nixos/headless-boot.nix
     ../../modules/nixos/sway.nix
+    ../../modules/nixos/syncthing.nix
 
     ../../users/felix
   ];
@@ -28,5 +29,20 @@
     build = "sudo nixos-rebuild build --flake ~/.config/nixos#Laptop";
     switch = "sudo nixos-rebuild switch --flake ~/.config/nixos#Laptop";
     batt = "cat /sys/class/power_supply/BAT*/capacity";
+  };
+
+  services.syncthing.settings = {
+    gui.user = "laptop";
+    devices = {
+      "workstation-server" = { id = "TODO"; };
+    };
+    folders = {
+      "passwords" = {
+        devices = [ "workstation-server" "smartphone" "iPad" ];
+      };
+      "markdown" = {
+        devices = [ "workstation-server" "smartphone" "iPad" ];
+      };
+    };
   };
 }
