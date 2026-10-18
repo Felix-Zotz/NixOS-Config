@@ -40,7 +40,10 @@
           ++ extraModules;
       };
   in {
-    nixosConfigurations."Workstation-Server" = mkHost "workstation-server" [];
+    nixosConfigurations."Workstation-Server" = mkHost "workstation-server" [
+      disko.nixosModules.disko
+      ./hosts/workstation-server/disko.nix
+    ];
     nixosConfigurations."Laptop" = mkHost "laptop" [
       disko.nixosModules.disko
       ./hosts/laptop/disko.nix
