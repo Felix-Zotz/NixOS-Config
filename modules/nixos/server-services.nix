@@ -1,22 +1,9 @@
 {pkgs, ...}: {
-  services.cloudflared = {
-    enable = true;
-    tunnels."16def8b5-0164-43e3-ba30-b5c049fd7dbc" = {
-      credentialsFile = "/var/lib/cloudflared/creds.json";
-      ingress = {
-        "open-webui.irrwichte.de" = "http://127.0.0.1:8080";
-        "opencloud.irrwichte.de" = "http://127.0.0.1:9200";
-        "immich.irrwichte.de" = "http://127.0.0.1:2283";
-        # TODO:SSH (?)
-      };
-      default = "http_status:404";
-    };
-  };
-
   services.open-webui = {
     enable = true;
     port = 8080;
     host = "0.0.0.0";
+    openFirewall = true;
     environment = {
       OPENAI_API_BASE_URLS = "https://openrouter.ai/api/v1";
       WEBUI_AUTH = "true";
@@ -28,17 +15,21 @@
     enable = true;
     address = "0.0.0.0";
     port = 9200;
-    url = "https://opencloud.irrwichte.de";
+    url = "http://192.168.178.176:9200";
     environmentFile = "/etc/opencloud/secrets.env"; # JWT_SECRET, ADMIN_PASSWORD etc.
   };
 
   services.immich = {
     enable = true;
+    host = "0.0.0.0";
     port = 2283;
+    openFirewall = true;
     mediaLocation = "/mnt/sata-ssd";
     accelerationDevices = null;
   };
   users.users.immich.extraGroups = ["video" "render"];
+
+  networking.firewall.allowedTCPPorts = [9200];
 
   # Automatic shutdown for the night
   systemd.timers.scheduled-shutdown = {
