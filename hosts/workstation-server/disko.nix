@@ -1,6 +1,6 @@
-{disks ? ["/dev/nvme0n1"], ...}: {
+{ ... }: {
   disko.devices.disk.main = {
-    device = builtins.elemAt disks 0;
+    device = "/dev/disk/by-id/nvme-Lexar_SSD_NM790_1TB_NH7614R010010P2202";
     type = "disk";
     content = {
       type = "gpt";
