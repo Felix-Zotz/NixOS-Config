@@ -1,6 +1,7 @@
 {pkgs, ...}: {
   imports = [
     ./hardware.nix
+    ./disko.nix
 
     ../../modules/nixos/audio.nix
     ../../modules/nixos/core.nix
