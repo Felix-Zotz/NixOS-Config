@@ -2,8 +2,8 @@
   home.packages = with pkgs; [
     rustup
 
-    gcc
     clang
+    (lib.setPrio 10 gcc)
 
     graalvmPackages.graalvm-oracle_25
 
