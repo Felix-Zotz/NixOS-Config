@@ -35,7 +35,7 @@
   systemd.timers.scheduled-shutdown = {
     wantedBy = ["timers.target"];
     timerConfig = {
-      OnCalendar = "23:15";
+      OnCalendar = "22:45";
       Unit = "poweroff.target";
       Persistent = false;
     };
