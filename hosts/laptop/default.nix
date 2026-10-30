@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{ pkgs, ... }: {
   imports = [
     ./hardware.nix
 
@@ -26,23 +26,33 @@
   system.stateVersion = "26.05";
 
   home-manager.users.felix.home.shellAliases = {
-    build = "sudo nixos-rebuild build --flake ~/.config/nixos#Laptop";
-    switch = "sudo nixos-rebuild switch --flake ~/.config/nixos#Laptop";
-    check = "sudo nixos-rebuild dry-run --flake ~/.config/nixos#Laptop";
+    nix_build = "sudo nixos-rebuild build --flake ~/.config/nixos#Laptop";
+    nix_switch = "sudo nixos-rebuild switch --flake ~/.config/nixos#Laptop";
+    nix_test = "sudo nixos-rebuild dry-run --flake ~/.config/nixos#Laptop";
     batt = "cat /sys/class/power_supply/BAT*/capacity";
   };
 
   services.syncthing.settings = {
     gui.user = "laptop";
     devices = {
-      "workstation-server" = { id = "TODO"; };
+      "workstation-server" = {
+        id = "TODO";
+      };
     };
     folders = {
       "passwords" = {
-        devices = [ "workstation-server" "smartphone" "iPad" ];
+        devices = [
+          "workstation-server"
+          "smartphone"
+          "iPad"
+        ];
       };
       "markdown" = {
-        devices = [ "workstation-server" "smartphone" "iPad" ];
+        devices = [
+          "workstation-server"
+          "smartphone"
+          "iPad"
+        ];
       };
     };
   };

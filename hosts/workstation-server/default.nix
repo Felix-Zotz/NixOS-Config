@@ -62,9 +62,9 @@
   system.stateVersion = "26.05";
 
   home-manager.users.felix.home.shellAliases = {
-    build = "sudo nixos-rebuild build --flake ~/.config/nixos#Workstation-Server";
-    switch = "sudo nixos-rebuild switch --flake ~/.config/nixos#Workstation-Server";
-    check = "sudo nixos-rebuild dry-run --flake ~/.config/nixos#Workstation-Server";
+    nix_build = "sudo nixos-rebuild build --flake ~/.config/nixos#Workstation-Server";
+    nix_switch = "sudo nixos-rebuild switch --flake ~/.config/nixos#Workstation-Server";
+    nix_test = "sudo nixos-rebuild dry-run --flake ~/.config/nixos#Workstation-Server";
   };
 
   services.syncthing.settings = {
