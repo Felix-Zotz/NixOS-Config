@@ -1,4 +1,5 @@
-{pkgs, ...}: let
+{ pkgs, ... }:
+let
   rgPath = "${pkgs.ripgrep}/bin/rg";
 
   commonSettings = {
@@ -30,7 +31,8 @@
     davidanson.vscode-markdownlint
     gruntfuggly.todo-tree
   ];
-in {
+in
+{
   programs.vscode = {
     enable = true;
 
@@ -47,21 +49,19 @@ in {
             #spadin.zmk-tools
           ]);
 
-        userSettings =
-          commonSettings
-          // {
-            "window.newWindowProfile" = "Default";
-            "editor.defaultFormatter" = "esbenp.prettier-vscode";
+        userSettings = commonSettings // {
+          "window.newWindowProfile" = "Default";
+          "editor.defaultFormatter" = "esbenp.prettier-vscode";
 
-            "[markdown]" = {
-              "editor.defaultFormatter" = "DavidAnson.vscode-markdownlint";
-            };
-            "[toml]" = {
-              "editor.defaultFormatter" = "tamasfe.even-better-toml";
-            };
-            "telemetry.telemetryLevel" = "off";
-            "kilo-code.new.agentWorkStyle" = "human-in-the-loop";
+          "[markdown]" = {
+            "editor.defaultFormatter" = "DavidAnson.vscode-markdownlint";
           };
+          "[toml]" = {
+            "editor.defaultFormatter" = "tamasfe.even-better-toml";
+          };
+          "telemetry.telemetryLevel" = "off";
+          "kilo-code.new.agentWorkStyle" = "human-in-the-loop";
+        };
       };
 
       APA = {
@@ -78,16 +78,14 @@ in {
             rust-lang.rust-analyzer
           ]);
 
-        userSettings =
-          commonSettings
-          // {
-            "[markdown]" = {
-              "editor.defaultFormatter" = "DavidAnson.vscode-markdownlint";
-            };
-            "[toml]" = {
-              "editor.defaultFormatter" = "tamasfe.even-better-toml";
-            };
+        userSettings = commonSettings // {
+          "[markdown]" = {
+            "editor.defaultFormatter" = "DavidAnson.vscode-markdownlint";
           };
+          "[toml]" = {
+            "editor.defaultFormatter" = "tamasfe.even-better-toml";
+          };
+        };
       };
 
       FLL = {
@@ -102,52 +100,6 @@ in {
           ]);
 
         userSettings = commonSettings;
-      };
-
-      NixOS = {
-        extensions = with pkgs.vscode-extensions; [
-          davidanson.vscode-markdownlint
-          gruntfuggly.todo-tree
-          jnoortheen.nix-ide
-        ];
-
-        userSettings =
-          commonSettings
-          // {
-            "nix.enableLanguageServer" = true;
-            "nix.serverPath" = "${pkgs.nil}/bin/nil";
-            "nix.serverSettings.nil.formatting.command" = [
-              "${pkgs.alejandra}/bin/alejandra"
-            ];
-
-            "[nix]" = {
-              "editor.defaultFormatter" = "jnoortheen.nix-ide";
-            };
-          };
-      };
-
-      WEB = {
-        extensions =
-          commonExtensions
-          ++ (with pkgs.vscode-extensions; [
-            formulahendry.auto-rename-tag
-            biomejs.biome
-            ecmel.vscode-html-css
-            tomoki1207.pdf
-          ]);
-
-        userSettings =
-          commonSettings
-          // {
-            "editor.defaultFormatter" = "biomejs.biome";
-
-            "[markdown]" = {
-              "editor.defaultFormatter" = "DavidAnson.vscode-markdownlint";
-            };
-            "[toml]" = {
-              "editor.defaultFormatter" = "tamasfe.even-better-toml";
-            };
-          };
       };
     };
   };

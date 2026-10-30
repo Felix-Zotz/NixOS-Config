@@ -17,9 +17,9 @@
       ../../modules/home/ghostty.nix
       ../../modules/home/git.nix
       ../../modules/home/gtk.nix
+      ../../modules/home/helix.nix
       ../../modules/home/keepassxc.nix
       ../../modules/home/media_viewer.nix
-      ../../modules/home/neovim.nix
       ../../modules/home/shell.nix
       ../../modules/home/sway.nix
       ../../modules/home/toolchains.nix

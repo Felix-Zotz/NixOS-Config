@@ -2,7 +2,8 @@
   pkgs,
   lib,
   ...
-}: {
+}:
+{
   time.timeZone = "Europe/Berlin";
 
   i18n.defaultLocale = "en_US.UTF-8";
@@ -25,9 +26,11 @@
   nixpkgs.config.allowUnfree = true;
 
   environment = {
-    defaultPackages = lib.mkForce [];
-    systemPackages = with pkgs; [git neovim];
-    variables.EDITOR = "nvim";
+    defaultPackages = lib.mkForce [ ];
+    systemPackages = with pkgs; [
+      git
+      helix
+    ];
   };
 
   services.openssh = {
@@ -38,10 +41,13 @@
       PermitRootLogin = "no";
     };
   };
-  networking.firewall.allowedTCPPorts = [22];
+  networking.firewall.allowedTCPPorts = [ 22 ];
 
   nix.settings = {
-    experimental-features = ["nix-command" "flakes"];
+    experimental-features = [
+      "nix-command"
+      "flakes"
+    ];
     auto-optimise-store = true;
   };
   nix.gc = {
