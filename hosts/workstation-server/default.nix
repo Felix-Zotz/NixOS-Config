@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{ pkgs, ... }: {
   imports = [
     ./hardware.nix
     ./disko.nix
@@ -6,6 +6,7 @@
     ../../modules/nixos/audio.nix
     ../../modules/nixos/core.nix
     ../../modules/nixos/gpu.nix
+    ../../modules/nixos/llama-cpp.nix
     ../../modules/nixos/server-services.nix
     ../../modules/nixos/headless-boot.nix
     ../../modules/nixos/sway.nix
@@ -38,7 +39,10 @@
     address = "192.168.178.1";
     interface = "enp37s0";
   };
-  networking.nameservers = ["1.1.1.1" "192.168.178.1"];
+  networking.nameservers = [
+    "1.1.1.1"
+    "192.168.178.1"
+  ];
 
   fileSystems."/mnt/hdd1" = {
     device = "/dev/disk/by-uuid/1d0e5eac-e7f0-474f-8403-137b3b1fbecc";
@@ -66,14 +70,24 @@
   services.syncthing.settings = {
     gui.user = "workstation-server";
     devices = {
-      "laptop" = { id = "TODO"; };
+      "laptop" = {
+        id = "TODO";
+      };
     };
     folders = {
       "passwords" = {
-        devices = [ "laptop" "smartphone" "iPad" ];
+        devices = [
+          "laptop"
+          "smartphone"
+          "iPad"
+        ];
       };
       "markdown" = {
-        devices = [ "laptop" "smartphone" "iPad" ];
+        devices = [
+          "laptop"
+          "smartphone"
+          "iPad"
+        ];
       };
     };
   };
