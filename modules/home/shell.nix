@@ -1,6 +1,8 @@
-{pkgs, ...}: {
-  programs.bash.enable = true;
-  programs.zsh.enable = true;
+{ pkgs, ... }: {
+  programs = {
+    bash.enable = true;
+    fish.enable = true;
+  };
   programs.direnv = {
     enable = true;
     nix-direnv.enable = true;
