@@ -13,6 +13,7 @@
     ddcutil
     spotify-player
     pulseaudio
+    tmux
   ];
   services.playerctld.enable = true;
 
