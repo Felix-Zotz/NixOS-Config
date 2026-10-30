@@ -33,6 +33,9 @@
     ];
   };
 
+  programs.fish.enable = true;
+  users.defaultUserShell = pkgs.fish;
+
   services.openssh = {
     enable = true;
     settings = {
