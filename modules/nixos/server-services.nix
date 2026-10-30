@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{ pkgs, ... }: {
   services.open-webui = {
     enable = true;
     port = 8080;
@@ -27,13 +27,25 @@
     mediaLocation = "/mnt/sata-ssd";
     accelerationDevices = null;
   };
-  users.users.immich.extraGroups = ["video" "render"];
+  users = {
+    users.immich = {
+      extraGroups = [
+        "video"
+        "render"
+      ];
+      uid = 999;
+    };
+    groups.immich.gid = 998;
+  };
+  systemd = {
+    tmpfiles.rules = [
+      "Z /mnt/sata-ssd - immich immich - -"
+    ];
+    services.immich-server.unitConfig.RequiresMountsFor = "/mnt/sata-ssd";
+  };
 
-  networking.firewall.allowedTCPPorts = [9200];
-
-  # Automatic shutdown for the night
   systemd.timers.scheduled-shutdown = {
-    wantedBy = ["timers.target"];
+    wantedBy = [ "timers.target" ];
     timerConfig = {
       OnCalendar = "22:45";
       Unit = "poweroff.target";
@@ -43,7 +55,7 @@
 
   systemd.services.hd-idle = {
     description = "hd-idle - spin down idle HDDs";
-    wantedBy = ["multi-user.target"];
+    wantedBy = [ "multi-user.target" ];
     serviceConfig = {
       Type = "simple";
       ExecStart = ''
