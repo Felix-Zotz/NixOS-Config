@@ -2,7 +2,6 @@
 # and may be overwritten by future invocations.  Please make changes
 # to /home/felix/.config/nixos/hosts/workstation-server/default.nix instead.
 {
-  config,
   lib,
   modulesPath,
   ...
@@ -21,9 +20,9 @@
     "sd_mod"
   ];
   boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ "kvm-intel" ];
+  boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-  hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+  hardware.cpu.amd.updateMicrocode = true;
 }
