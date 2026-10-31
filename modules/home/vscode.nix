@@ -99,7 +99,9 @@ in
             ms-python.vscode-python-envs
           ]);
 
-        userSettings = commonSettings;
+        userSettings = commonSettings // {
+          "python.defaultInterpreterPath" = "\${workspaceFolder}/.venv/bin/python";
+        };
       };
     };
   };
