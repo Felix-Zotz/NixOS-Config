@@ -25,6 +25,7 @@
 
   nixpkgs.config.allowUnfree = true;
 
+  programs.nano.enable = false;
   environment = {
     defaultPackages = lib.mkForce [ ];
     systemPackages = with pkgs; [

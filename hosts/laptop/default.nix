@@ -19,7 +19,10 @@
   # Bootloader + kernel choice live here, not in core.nix - a future
   # second host (different disk layout, different hardware) shouldn't
   # inherit this by accident.
-  boot.loader.systemd-boot.enable = true;
+  boot.loader.systemd-boot = {
+    enable = true;
+    configurationLimit = 5;
+  };
   boot.loader.efi.canTouchEfiVariables = true;
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
