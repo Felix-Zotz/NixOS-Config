@@ -15,38 +15,41 @@
     };
   };
 
-  outputs = {
-    self,
-    nixpkgs,
-    home-manager,
-    disko,
-    ...
-  } @ inputs: let
-    mkHost = hostname: extraModules:
-      nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        specialArgs = {inherit inputs;};
-        modules =
-          [
+  outputs =
+    {
+      self,
+      nixpkgs,
+      home-manager,
+      disko,
+      ...
+    }@inputs:
+    let
+      mkHost =
+        hostname: extraModules:
+        nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          specialArgs = { inherit inputs; };
+          modules = [
             ./hosts/${hostname}
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
-              home-manager.extraSpecialArgs = {inherit inputs;};
+              home-manager.extraSpecialArgs = { inherit inputs; };
               home-manager.backupFileExtension = "bak";
             }
           ]
           ++ extraModules;
-      };
-  in {
-    nixosConfigurations."Workstation-Server" = mkHost "workstation-server" [
-      disko.nixosModules.disko
-      ./hosts/workstation-server/disko.nix
-    ];
-    nixosConfigurations."Laptop" = mkHost "laptop" [
-      disko.nixosModules.disko
-      ./hosts/laptop/disko.nix
-    ];
-  };
+        };
+    in
+    {
+      nixosConfigurations."Workstation-Server" = mkHost "workstation-server" [
+        disko.nixosModules.disko
+        ./hosts/workstation-server/disko.nix
+      ];
+      nixosConfigurations."Laptop" = mkHost "laptop" [
+        disko.nixosModules.disko
+        ./hosts/laptop/disko.nix
+      ];
+    };
 }
