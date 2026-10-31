@@ -1,6 +1,9 @@
 { ... }: {
   services.syncthing = {
     enable = true;
+    user = "felix";
+    group = "users";
+    dataDir = "/home/felix";
     openDefaultPorts = true;
     guiPasswordFile = "/etc/syncthing-gui-password";
 
