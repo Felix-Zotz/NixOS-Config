@@ -92,11 +92,11 @@ in
         extensions =
           commonExtensions
           ++ (with pkgs.vscode-extensions; [
-            ms-python.python
-            ms-python.vscode-pylance
-            ms-python.debugpy
-            ms-python.vscode-python-envs
+            astral-sh.ty
             charliermarsh.ruff
+            ms-python.debugpy
+            ms-python.python
+            ms-python.vscode-python-envs
           ]);
 
         userSettings = commonSettings;
