@@ -37,6 +37,10 @@
   programs.fish.enable = true;
   users.defaultUserShell = pkgs.fish;
 
+  security.sudo.extraConfig = ''
+    Defaults env_keep += "XDG_CONFIG_HOME"
+  '';
+
   services.openssh = {
     enable = true;
     settings = {

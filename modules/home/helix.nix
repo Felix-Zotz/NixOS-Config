@@ -1,4 +1,6 @@
-{ ... }: {
+{ pkgs, ... }: {
+  home.sessionVariables.XDG_CONFIG_HOME = "/home/felix/.config";
+
   programs.helix = {
     enable = true;
     defaultEditor = true;
@@ -116,13 +118,16 @@
 
     languages = {
       language-server = {
-        rust-analyzer.config = {
-          check.command = "clippy";
-          cargo.features = "all";
+        rust-analyzer = {
+          command = "${pkgs.rust-analyzer}/bin/rust-analyzer";
+          config = {
+            check.command = "clippy";
+            cargo.features = "all";
+          };
         };
 
         clangd = {
-          command = "clangd";
+          command = "${pkgs.clang-tools}/bin/clangd";
           args = [
             "--background-index"
             "--clang-tidy"
@@ -131,7 +136,7 @@
         };
 
         nixd = {
-          command = "nixd";
+          command = "${pkgs.nixd}/bin/nixd";
           config.nixd = {
             nixpkgs.expr = ''import (builtins.getFlake "/home/felix/.config/nixos/").inputs.nixpkgs { }'';
             options = {
@@ -142,27 +147,27 @@
         };
 
         ty = {
-          command = "ty";
+          command = "${pkgs.ty}/bin/ty";
           args = [ "server" ];
         };
 
         ruff = {
-          command = "ruff";
+          command = "${pkgs.ruff}/bin/ruff";
           args = [ "server" ];
         };
 
         biome = {
-          command = "biome";
+          command = "${pkgs.biome}/bin/biome";
           args = [ "lsp-proxy" ];
         };
 
         tombi = {
-          command = "tombi";
+          command = "${pkgs.tombi}/bin/tombi";
           args = [ "lsp" ];
         };
 
         rumdl = {
-          command = "rumdl";
+          command = "${pkgs.rumdl}/bin/rumdl";
           args = [ "server" ];
         };
       };
@@ -170,7 +175,7 @@
       language =
         let
           biomeFormatter = {
-            command = "biome";
+            command = "${pkgs.biome}/bin/biome";
             args = [
               "format"
               "--stdin-file-path"
@@ -192,7 +197,7 @@
             name = "nix";
             auto-format = true;
             language-servers = [ "nixd" ];
-            formatter.command = "nixfmt";
+            formatter.command = "${pkgs.nixfmt}/bin/nixfmt";
           }
           {
             name = "python";
@@ -208,12 +213,15 @@
               }
             ];
             formatter = {
-              command = "bash";
+              command = "${pkgs.bash}/bin/bash";
               args = [
                 "-o"
                 "pipefail"
                 "-c"
-                "ruff check --select I --fix-only --stdin-filename '%{buffer_name}' - | ruff format --stdin-filename '%{buffer_name}' -"
+                ''
+                  ${pkgs.ruff}/bin/ruff check --select I --fix-only --stdin-filename '%{buffer_name}' - |
+                    ${pkgs.ruff}/bin/ruff format --stdin-filename '%{buffer_name}' -
+                ''
               ];
             };
           }
@@ -240,7 +248,7 @@
             auto-format = true;
             language-servers = [ "yaml-language-server" ];
             formatter = {
-              command = "yamlfmt";
+              command = "${pkgs.yamlfmt}/bin/yamlfmt";
               args = [ "-in" ];
             };
           }
@@ -255,7 +263,7 @@
             soft-wrap.enable = true;
             language-servers = [ "rumdl" ];
             formatter = {
-              command = "rumdl";
+              command = "${pkgs.rumdl}/bin/rumdl";
               args = [
                 "fmt"
                 "--silent"
