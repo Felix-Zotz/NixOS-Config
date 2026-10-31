@@ -71,7 +71,7 @@
     gui.user = "workstation-server";
     devices = {
       "laptop" = {
-        id = "TODO";
+        id = "MVTFPRM-UDZYEMD-2VWJTFS-LU232HO-JHQLRMM-OMCPXQU-MD2MGLV-NXYQKAF";
       };
     };
     folders = {
