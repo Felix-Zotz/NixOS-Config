@@ -11,6 +11,7 @@
     graalvmPackages.graalvm-oracle_25
 
     # Python
+    python3
     pyright
     ruff
     uv
