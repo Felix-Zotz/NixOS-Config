@@ -67,7 +67,7 @@
   home-manager.users.felix.home.shellAliases = {
     nix_build = "sudo nixos-rebuild build --flake ~/.config/nixos#Workstation-Server";
     nix_switch = "sudo nixos-rebuild switch --flake ~/.config/nixos#Workstation-Server";
-    nix_try-run = "sudo nixos-rebuild dry-run --flake ~/.config/nixos#Workstation-Server";
+    nix_dry-run = "sudo nixos-rebuild dry-run --flake ~/.config/nixos#Workstation-Server";
     nix_test = "sudo nixos-rebuild test --flake ~/.config/nixos#Workstation-Server";
   };
 
