@@ -24,6 +24,6 @@
   home.shellAliases = {
     down = "systemctl poweroff";
     sus = "systemctl suspend";
-    update = "nix flake update --flake ~/.config/nixos";
+    nix_update = "nix flake update --flake ~/.config/nixos";
   };
 }
