@@ -46,7 +46,6 @@ in
           ++ (with pkgs.vscode-extensions; [
             esbenp.prettier-vscode
             tomoki1207.pdf
-            #spadin.zmk-tools
           ]);
 
         userSettings = commonSettings // {
@@ -69,13 +68,15 @@ in
           commonExtensions
           ++ (with pkgs.vscode-extensions; [
             vadimcn.vscode-lldb
-            #connor4312.esbuild-problem-matchers
             dbaeumer.vscode-eslint
-            #ms-vscode.extension-test-runner
             christian-kohler.npm-intellisense
             esbenp.prettier-vscode
             yoavbls.pretty-ts-errors
             rust-lang.rust-analyzer
+          ])
+          ++ (with pkgs.vscode-marketplace; [
+            connor4312.esbuild-problem-matchers
+            ms-vscode.extension-test-runner
           ]);
 
         userSettings = commonSettings // {
@@ -92,15 +93,16 @@ in
         extensions =
           commonExtensions
           ++ (with pkgs.vscode-extensions; [
-            astral-sh.ty
             charliermarsh.ruff
             ms-python.debugpy
             ms-python.python
             ms-python.vscode-python-envs
-          ]);
+          ])
+          ++ [ pkgs.vscode-marketplace.astral-sh.ty ];
 
         userSettings = commonSettings // {
           "python.defaultInterpreterPath" = "\${workspaceFolder}/.venv/bin/python";
+          "ty.path" = [ "${pkgs.ty}/bin/ty" ];
         };
       };
     };
