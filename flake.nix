@@ -51,9 +51,9 @@
         disko.nixosModules.disko
         ./hosts/workstation-server/disko.nix
       ];
-      nixosConfigurations."Laptop" = mkHost "laptop" [
+      nixosConfigurations."Laptop-old" = mkHost "laptop-old" [
         disko.nixosModules.disko
-        ./hosts/laptop/disko.nix
+        ./hosts/laptop-old/disko.nix
       ];
     };
 }

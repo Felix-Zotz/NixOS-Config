@@ -74,21 +74,21 @@
   services.syncthing.settings = {
     gui.user = "workstation-server";
     devices = {
-      "laptop" = {
+      "laptop-old" = {
         id = "MVTFPRM-UDZYEMD-2VWJTFS-LU232HO-JHQLRMM-OMCPXQU-MD2MGLV-NXYQKAF";
       };
     };
     folders = {
       "passwords" = {
         devices = [
-          "laptop"
+          "laptop-old"
           "smartphone"
           "iPad"
         ];
       };
       "markdown" = {
         devices = [
-          "laptop"
+          "laptop-old"
           "smartphone"
           "iPad"
         ];
