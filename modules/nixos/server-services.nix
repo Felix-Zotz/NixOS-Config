@@ -32,18 +32,52 @@
     };
 
     settings = {
+      machineLearning.duplicateDetection = {
+        maxDistance = 0.03;
+      };
+      ffmpeg = {
+        targetVideoCodec = "hevc";
+        targetAudioCodec = "opus";
+        acceptedVideoCodecs = [
+          "hevc"
+          "vp9"
+          "av1"
+        ];
+        acceptedAudioCodecs = [
+          "aac"
+          "opus"
+        ];
+        temporalAQ = true;
+        targetResolution = "1080";
+        realtime = {
+          enabled = true;
+          resolutions = [
+            720
+            1080
+            1440
+          ];
+        };
+      };
+      nightlyTasks = {
+        startTime = "06:05";
+      };
       image = {
         thumbnail = {
+          quality = 70;
           format = "webp";
         };
-
         preview = {
+          quality = 70;
+          format = "webp";
+        };
+        fullsize = {
+          enabled = true;
           format = "webp";
         };
       };
-
-      ffmpeg = {
-        targetVideoCodec = "hevc";
+      backup.database = {
+        enabled = true;
+        cronExpression = "30 22 * * *";
       };
     };
   };
