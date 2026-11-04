@@ -26,7 +26,28 @@
     openFirewall = true;
     mediaLocation = "/mnt/sata-ssd";
     accelerationDevices = null;
+
+    environment = {
+      TZ = "Europe/Berlin";
+    };
+
+    settings = {
+      image = {
+        thumbnail = {
+          format = "webp";
+        };
+
+        preview = {
+          format = "webp";
+        };
+      };
+
+      ffmpeg = {
+        targetVideoCodec = "hevc";
+      };
+    };
   };
+
   users = {
     users.immich = {
       extraGroups = [
@@ -37,6 +58,7 @@
     };
     groups.immich.gid = 998;
   };
+
   systemd = {
     tmpfiles.rules = [
       "Z /mnt/sata-ssd - immich immich - -"
