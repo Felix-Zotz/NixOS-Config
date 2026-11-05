@@ -13,10 +13,15 @@
 
   services.opencloud = {
     enable = true;
+    package = pkgs.opencloud;
     address = "0.0.0.0";
     port = 9200;
     url = "http://192.168.178.176:9200";
-    environmentFile = "/etc/opencloud/secrets.env"; # JWT_SECRET, ADMIN_PASSWORD etc.
+    stateDir = "/var/lib/opencloud";
+    environment = {
+      STORAGE_USERS_POSIX_ROOT = "/mnt/hdd2";
+    };
+    environmentFile = "/etc/opencloud/secrets.env";
   };
 
   services.immich = {
@@ -97,7 +102,10 @@
     tmpfiles.rules = [
       "Z /mnt/sata-ssd - immich immich - -"
     ];
-    services.immich-server.unitConfig.RequiresMountsFor = "/mnt/sata-ssd";
+    services = {
+      opencloud.unitConfig.RequiresMountsFor = "/mnt/hdd2";
+      immich-server.unitConfig.RequiresMountsFor = "/mnt/sata-ssd";
+    };
   };
 
   systemd.timers.scheduled-shutdown = {
