@@ -7,9 +7,6 @@
     clang
     clang-tools
 
-    # Java & Kotlin
-    graalvmPackages.graalvm-oracle_25
-
     # Python
     python3
     pyright
