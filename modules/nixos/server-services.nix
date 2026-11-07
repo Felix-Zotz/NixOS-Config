@@ -42,6 +42,8 @@
       };
       ffmpeg = {
         targetVideoCodec = "hevc";
+        accel = "qsv";
+        accelDecode = true;
         targetAudioCodec = "opus";
         acceptedVideoCodecs = [
           "hevc"

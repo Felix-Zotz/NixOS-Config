@@ -19,7 +19,10 @@
       terminal = "${pkgs.ghostty}/bin/ghostty";
       menu = "${pkgs.fuzzel}/bin/fuzzel_path | ${pkgs.fuzzel}/bin/fuzzel | ${pkgs.findutils}/bin/xargs swaymsg exec --";
 
-      output."DP-1".scale = "1.25";
+      output."DP-2" = {
+        mode = "3840x2160@165Hz";
+        scale = "1.25";
+      };
 
       input = {
         "type:keyboard" = {
