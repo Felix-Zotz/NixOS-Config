@@ -115,6 +115,14 @@
                 name = "Gmail";
                 url = "https://mail.google.com";
               }
+              {
+                name = "Kleinanzeigen";
+                url = "https://www.kleinanzeigen.de";
+              }
+              {
+                name = "Immich";
+                url = "http://192.168.178.176:2283";
+              }
             ];
           }
         ];
