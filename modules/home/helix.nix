@@ -102,7 +102,8 @@
           normal = wordKeys // {
             "C-backspace" = "delete_word_backward";
             "C-del" = "delete_word_forward";
-
+            "S-up" = "increment";
+            "S-down" = "decrement";
             "C-w" = {
               "S-left" = "swap_view_left";
               "S-down" = "swap_view_down";
