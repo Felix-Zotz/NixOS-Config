@@ -171,6 +171,15 @@
           command = "${pkgs.rumdl}/bin/rumdl";
           args = [ "server" ];
         };
+
+        harper = {
+          command = "${pkgs.harper}/bin/harper";
+          args = [ "--stdio" ];
+        };
+
+        typos = {
+          command = "${pkgs.typos-lsp}/bin/typos-lsp";
+        };
       };
 
       language =
@@ -188,16 +197,26 @@
           {
             name = "rust";
             auto-format = true;
+            language-servers = [
+              "rust-analyzer"
+              "typos"
+            ];
           }
           {
             name = "c";
             auto-format = true;
-            language-servers = [ "clangd" ];
+            language-servers = [
+              "clangd"
+              "typos"
+            ];
           }
           {
             name = "nix";
             auto-format = true;
-            language-servers = [ "nixd" ];
+            language-servers = [
+              "nixd"
+              "typos"
+            ];
             formatter.command = "${pkgs.nixfmt}/bin/nixfmt";
           }
           {
@@ -205,6 +224,7 @@
             auto-format = true;
             language-servers = [
               "ty"
+              "typos"
               {
                 name = "ruff";
                 only-features = [
@@ -232,6 +252,7 @@
             language-servers = [
               "vscode-json-language-server"
               "biome"
+              "typos"
             ];
             formatter = biomeFormatter;
           }
@@ -241,13 +262,17 @@
             language-servers = [
               "vscode-json-language-server"
               "biome"
+              "typos"
             ];
             formatter = biomeFormatter;
           }
           {
             name = "yaml";
             auto-format = true;
-            language-servers = [ "yaml-language-server" ];
+            language-servers = [
+              "yaml-language-server"
+              "typos"
+            ];
             formatter = {
               command = "${pkgs.yamlfmt}/bin/yamlfmt";
               args = [ "-in" ];
@@ -256,13 +281,19 @@
           {
             name = "toml";
             auto-format = true;
-            language-servers = [ "tombi" ];
+            language-servers = [
+              "tombi"
+              "typos"
+            ];
           }
           {
             name = "markdown";
             auto-format = true;
             soft-wrap.enable = true;
-            language-servers = [ "rumdl" ];
+            language-servers = [
+              "rumdl"
+              "harper"
+            ];
             formatter = {
               command = "${pkgs.rumdl}/bin/rumdl";
               args = [
