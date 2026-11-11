@@ -11,7 +11,7 @@
     ];
     openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIO7hjdiYFf4xcm9Me9hmNus1GzSOcyj0VNyGEffSDaRo mobile@localhost" # iPad
-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEMgGZKX8GN6UhAg81JOQRXHEP6JnL9oeZgGbBAYq3wt u0_a476@localhost" # Motorola Edge 40
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEGk8Qe/DTAqd/Cm9YGC6k4W7M5hnY1Fq/jRwbfRzE3T motorola-edge-40" # Motorola Edge 40
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGm8KzWHMs1Js88AYGgY/QuMUUYBJc6jv7vJtXXePje4 felix@felix-mobile" # Laptop
     ];
   };
