@@ -2,7 +2,11 @@
   programs.ghostty = {
     enable = true;
     settings = {
-      window-decoration = false;
+      keybind = [
+        "ctrl+enter=unbind"
+        "f11=toggle_fullscreen"
+      ];
+      theme = "Dark+";
     };
   };
 }
