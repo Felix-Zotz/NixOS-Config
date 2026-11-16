@@ -6,7 +6,6 @@
         "ctrl+enter=unbind"
         "f11=toggle_fullscreen"
       ];
-      theme = "Dark+";
     };
   };
 }

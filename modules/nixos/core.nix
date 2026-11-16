@@ -70,7 +70,5 @@
 
   services.journald.settings.Journal.SystemMaxUse = "500M";
 
-  programs.dconf.enable = true;
-
   hardware.i2c.enable = true;
 }

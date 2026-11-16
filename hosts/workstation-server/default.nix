@@ -8,6 +8,7 @@
     ../../modules/nixos/gpu-intel.nix
     ../../modules/nixos/llama-cpp.nix
     ../../modules/nixos/server-services.nix
+    ../../modules/nixos/stylix.nix
     ../../modules/nixos/headless-boot.nix
     ../../modules/nixos/sway.nix
     ../../modules/nixos/syncthing.nix

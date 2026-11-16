@@ -13,6 +13,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    stylix = {
+      url = "github:nix-community/stylix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     disko = {
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -24,6 +29,7 @@
       self,
       nixpkgs,
       home-manager,
+      stylix,
       disko,
       ...
     }@inputs:
@@ -34,6 +40,7 @@
           system = "x86_64-linux";
           specialArgs = { inherit inputs; };
           modules = [
+            stylix.nixosModules.stylix
             ./hosts/${hostname}
             home-manager.nixosModules.home-manager
             {

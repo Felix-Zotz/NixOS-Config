@@ -6,8 +6,6 @@
     defaultEditor = true;
 
     settings = {
-      theme = "dark_plus";
-
       editor = {
         scrolloff = 10;
         mouse = false;

@@ -15,7 +15,6 @@ let
 
     "todo-tree.ripgrep.ripgrep" = rgPath;
 
-    "workbench.colorTheme" = "Dark+";
     "workbench.iconTheme" = "vs-seti";
     "workbench.activityBar.location" = "top";
     "editor.minimap.autohide" = "mouseover";
